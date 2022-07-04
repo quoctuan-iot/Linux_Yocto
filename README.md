@@ -76,10 +76,9 @@ The different images: refer **Yocto Project Reference Manual**
 
 What type of the machine?
 
-> Add machine to the conf/local.conf file.
+Add machine to the conf/local.conf file.
 
 ---> Output: tmp/deploy/images/
-
 
 ##### Configuration network booting on Ubunt 16.04 to first boot.
 
@@ -110,20 +109,43 @@ What type of the machine?
     sudo exportfs -a
 
 **I have a automation script to install TFTP and NFS on Ubuntu 16.04:** 
+[Installing TFTP and NFS] (https://github.com/quoctuan-iot/Shell_scripts/blob/main/01_setup_env_ubuntu.sh)
 
 When boot and stop at the U-boot prompt by pressing any key: Some command to write environment boot.
 
 Configure static IP: 
+
     setenv ipaddr <static_ip>
 
 Configure IP on server host.
+
     setenv serverip <host_ip>
 
 Configure the rootfs, image, device tree
+
     setenv nfsroot /nfs
 
 Save environment
+
     saveenv
+
+##### Sharing downloads
+
+To optimize the build times by sharing download.
+
+Setting up **DL_DIR** in conf/local.conf file.
+
+    DL_DIR ?= "${BSPDIR}/downloads/"
+
+##### Sharing state cache
+
+Yocto builds everything from source. A new project -> Only the configuration is created.
+
+If the input data changes, the task need to be rebuilt.
+
+Setting up **SSTATE_DIR** in conf/local.conf file.
+
+    SSTATE_DIR ?="state-dir"
 
 
 ## 2. The BSP Layer
