@@ -29,6 +29,7 @@ Bitbake as the make utilyty in Yocto -> parse the configuration, meta, schedule 
 Poky, Bitbake -> is used by Yocto.
 
 Yocto is able to run on Linux system:
+
     - git 1.7.8 ->
     - tar 1.24 ->
     - python 2.7 -> (not python3)
@@ -55,7 +56,7 @@ Can all share a common **downloads**, **state cache**.
 
 Using the oe-int-build-env script provided by Poky.
 
-> source poky/oe-int-build-env build
+    source poky/oe-int-build-env build
 
 **HOW IT WORKS**
 
@@ -71,7 +72,7 @@ build/conf:
 
 What type of image we want to build?
 
-> The different images: refer **Yocto Project Reference Manual**
+The different images: refer **Yocto Project Reference Manual**
 
 What type of the machine?
 
@@ -83,43 +84,46 @@ What type of the machine?
 ##### Configuration network booting on Ubunt 16.04 to first boot.
 
 **Installing a TFTP server**
-> #Install tftpd-hpa
-> sudo apt-get install tftpd-hpa
 
-> #Disable firewall
-> sudo ufw disable
+    #Install tftpd-hpa
+    sudo apt-get install tftpd-hp
 
-> service nfs-kernel-server status
+    #Disable firewall
+    sudo ufw disabl
+
+    # Check status nfs-server
+    service nfs-kernel-server status
 
 **Installing an NFS server**
 
-> #Create NFS dir
-> sudo mkdir -p /nfs/
+    #Create NFS dir
+    sudo mkdir -p /nfs/
 
-> #Install nfs-kernel-server
-> sudo apt-get install nfs-kernel-server
+    #Install nfs-kernel-server
+    sudo apt-get install nfs-kernel-server
 
-> #Start a nfs-kernel-server
-> sudo /etc/init.d/nfs-kernel-server start
+    #Start a nfs-kernel-server
+    sudo /etc/init.d/nfs-kernel-server start
 
-> #Config NFS server
-> echo "/nfs/ *(rw,no_subtree_check,sync,no_root_squash)" |sudo tee -a /etc/exports
-> sudo exportfs -a
+    #Config NFS server
+    echo "/nfs/ *(rw,no_subtree_check,sync,no_root_squash)" |sudo tee -a /etc/exports
+    sudo exportfs -a
 
 **I have a automation script to install TFTP and NFS on Ubuntu 16.04:** 
 
-When boot and stop at the U-boot prompt by pressing any key:
-    Configure static IP: 
-> setenv ipaddr <static_ip>
+When boot and stop at the U-boot prompt by pressing any key: Some command to write environment boot.
 
-    Configure IP on server host.
-> setenv serverip <host_ip>
+Configure static IP: 
+    setenv ipaddr <static_ip>
 
-    Configure the rootfs, image, device tree
-> setenv nfsroot /nfs
+Configure IP on server host.
+    setenv serverip <host_ip>
 
-    Save environment
-> saveenv
+Configure the rootfs, image, device tree
+    setenv nfsroot /nfs
+
+Save environment
+    saveenv
 
 
 ## 2. The BSP Layer
