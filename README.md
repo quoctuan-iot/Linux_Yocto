@@ -109,6 +109,7 @@ Add machine to the conf/local.conf file.
     sudo exportfs -a
 
 **I have a automation script to install TFTP and NFS on Ubuntu 16.04:** 
+
 [Installing TFTP and NFS] (https://github.com/quoctuan-iot/Shell_scripts/blob/main/01_setup_env_ubuntu.sh)
 
 When boot and stop at the U-boot prompt by pressing any key: Some command to write environment boot.
