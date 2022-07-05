@@ -148,6 +148,23 @@ Setting up **SSTATE_DIR** in conf/local.conf file.
 
     SSTATE_DIR ?="state-dir"
 
+#### Debugging the build system
+
+##### Using the development shell
+
+##### Dumping bitbake's env
+
+##### Task log and run files.
+
+##### Error report tool
+
+##### Debugging Bitbake
+
+    bitbake -DDD <target>
+
 
 ## 2. The BSP Layer
 
+#### Creating a custom BSP layer
+
+#### 
